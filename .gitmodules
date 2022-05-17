@@ -7,6 +7,9 @@
 [submodule "comp587/rand_depth"]
 	path = comp587/rand_depth
 	url = https://github.com/massivelivefun/rand_depth
+[submodule "comp587/rand-depth"]
+	path = comp587/rand-depth
+	url = https://github.com/massivelivefun/rand-depth
 [submodule "comp587/trees"]
 	path = comp587/trees
 	url = https://github.com/massivelivefun/trees
