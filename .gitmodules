@@ -1,0 +1,12 @@
+[submodule "arithmetic"]
+    path = comp587/arithmetic
+    url = https://github.com/massivelivefun/arithmetic
+[submodule "linked_list"]
+    path = comp587/linked_list
+    url = https://github.com/massivelivefun/linked_list
+[submodule "rand_depth"]
+    path = comp587/rand_depth
+    url = https://github.com/massivelivefun/rand_depth
+[submodule "trees"]
+    path = comp587/trees
+    url = https://github.com/massivelivefun/trees
