@@ -1,0 +1,118 @@
+After you've implemented the code in sat_solver.py,
+answer the two questions below.  This portion is
+purely bonus worth up to 15% of the assignment;
+you do not need to complete this for full credit.
+
+1.) How might you extend this to produce a list of
+    all possible solutions, as opposed to one solution?
+
+Instead of returning the first left most solution, the
+base case should be putting the map of literals in a
+global list, and said global list should be declared
+outside of the scope of the "solve" definition.
+
+Such as:
+
+	// Outside of the solve def scope
+	list_of_literals = []
+
+	if isinstance(goals.head, Nil):
+		list_of_literals.append(literals)
+		return
+
+Also the "Or" case should be changed to:
+
+	if isinstance(goals.head, Or):
+		solve(Cons(goals.head.left, goals.tail), literals)
+		solve(Cons(goals.head.right, goals.tail), literals)
+		return
+
+This change is made so that both the left and right
+disjunct are both explored and the right is not ignored
+when the left disjunct is not "None".
+
+This should gather all of the possible true/false
+solutions of a boolean expression and store them in a
+convenient list for later use.
+
+2.) How might you extend this to produce an efficient
+    generator of all solutions?  Each time the generator
+    is queried, it should produce a new solution.  Being
+    an efficient generator, it should _not_ just simply
+    calculate all solutions at once and iterate over
+    the precalculated solutions.
+
+Fundamentally the satisfiability solver would have to be
+able to remember which routes it took in the past. All
+"And" binary operations are treated as straight paths
+that do not diverge. Also "Literals" by themselves are
+also solved in a linear fashion. So we only need to be
+concerned with instances of "Or" binary operations.
+
+When going through a binary expression there should be a
+way to record when/where an "Or" happened and how each one
+played out. Since an "Or" can only diverge in two ways and
+each "Or" can be new or exhausted there can only be four
+states that a "Or" operation could be in: "New", "Left",
+"Right", and "Exhausted". However, each "Or" operation
+could only ever be in three of the four states. This is
+because when a "Or" operation is brand new a decision
+has be made whether or not it goes left or right. On
+the next go around for the same "Or" operation it would
+go down the alternate path, but it would not be recorded
+as new, left, then right, it would be: new, left, then
+exhausted, or, new, right, then exhausted.
+
+All new "Or" operations could be kept track of with a
+list of integer values. The index of the list can be
+each of the "Or" operations. The value of each index,
+can keep track of which action was taken. Each action
+can be represented by the following: -1 can be a new
+"Or" operation, 0 can be a left that was taken, 1 can
+be a right that was taken, and 2 can be a "Or" operation
+that is exhausted.
+
+For example, the "Or" case can be changed to the
+following:
+
+	// somewhere at the top of the file
+	import random
+
+	// Nil needs to changed back to only return one solution
+	if isinstance(goals.head, Nil):
+		return literals
+
+	// decision array
+	or_decisions = []
+
+	if isinstance(goals.head, Or):
+		or_decisions.append(-1)
+		i = len(or_decisions)
+		random_value = bool(random.getrandbits(1))
+		if or_decision[i] != 2:
+			if random_value == True:
+				if or_decision[i] == 1:
+					or_decisions[i] = 0
+					solve(Cons(goals.head.left, goals.tail), literals)
+					return
+				elif or_decision[i] == 0:
+					or_decisions[i] = 1
+					solve(Cons(goals.head.right, goals.tail), literals)
+					return
+				else:
+					or_decision[i]
+			elif random_value == False:
+				if or_decision[i] == 1:
+					or_decisions[i] = 0
+					solve(Cons(goals.head.left, goals.tail), literals)
+					return
+				else:
+					or_decisions[i] = 1
+					solve(Cons(goals.head.right, goals.tail), literals)
+					return
+		else:
+			return
+
+This could probably work in theory. The random True
+or False is optional. I just didn't want the leftmost
+disjunct to be checked first at every "Or" operation.

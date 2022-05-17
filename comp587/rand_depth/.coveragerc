@@ -1,0 +1,5 @@
+[run]
+include =
+    src/rand_depth/*
+omit =
+    src/rand_depth/__init__.py

@@ -1,0 +1,43 @@
+After you've implemented the code in sat_solver.pl,
+answer the questions below.  This portion is
+purely bonus worth up to 15% of the assignment;
+you do not need to complete this for full credit.
+
+1.) The SAT solver from assignment 1 used a list, but
+    no lists are used in the Prolog-based SAT solver.
+    How is this solver able to avoid using lists?
+
+The solver avoids using lists because the sections of the
+binary operations are represented using data structures
+that Prolog uses called functors. The functors can be
+nested and thus used in a way where information is inside
+other functors.
+
+2.) The SAT solver from assignment 1 used a hash table
+    (i.e., a mapping) from variables to Boolean values.
+    However, no hash tables or maps are used in the
+    Prolog-based SAT solver.  How is this solver able
+    to avoid using lists?
+
+The varibles are binded to what they need to be when
+check out as a literal. If the variable has no negation
+then it is positive, visa versa otherwise. The binding
+acts as a hash table because when a variable is binded it
+should continue to be binded to what it was binded with
+at first.
+
+3.) The function you implemented for assignment 1
+    returned either a hash table or null, depending
+    on whether or not the solver was dealing with
+    a satisfiable or unsatisfiable formula.  The
+    Prolog-based SAT solver, however, doesn't exactly
+    return anything, but it still produces values.
+    How is the Prolog-based SAT solver producing values?
+    (As a hint, this question is connected to the
+    previous question.)
+
+The SAT solver is producing values because it is binding
+the supposed value to the variable itself with the use of
+unification. The variable is then binded with whether or
+not it needs to be positive or negative based on the
+variable has a negation or no negation symbol.
