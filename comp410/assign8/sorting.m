@@ -34,20 +34,20 @@
 :- mode insert_sorted(in, in, out) is det.
 
 insertion_sort(List, Result) :-
-	insertion_sort(List, [], Result).
+    insertion_sort(List, [], Result).
 
 insertion_sort([], List, List).
 insertion_sort([Head|Tail], TempList, ResultList) :-
-	insert_sorted(TempList, Head, SortedList),
-	insertion_sort(Tail, SortedList, ResultList).
+    insert_sorted(TempList, Head, SortedList),
+    insertion_sort(Tail, SortedList, ResultList).
 
 insert_sorted([], Element, [Element]).
 insert_sorted([Head|Tail], Element, Result) :-
-	if Head >= Element then
-		(Result = [Element, Head|Tail])
-	else
-		(Result = [Head|Rest],
-		insert_sorted(Tail, Element, Rest)).
+    if Head >= Element then
+        (Result = [Element, Head|Tail])
+    else
+        (Result = [Head|Rest],
+        insert_sorted(Tail, Element, Rest)).
 
 % MERGE SORT HINTS:
 % You will need to split the input list into two portions of
@@ -64,18 +64,18 @@ insert_sorted([Head|Tail], Element, Result) :-
 :- mode merge_sort(in, in, out) is det.
 
 merge_sort(List, Result) :-
-	list.length(List, Length),
-	merge_sort(List, Length, Result).
+    list.length(List, Length),
+    merge_sort(List, Length, Result).
 
 merge_sort(List, Length, Result) :-
-	if (Length > 1) then
-		(NewLength = Length // 2,
-		list.det_split_list(NewLength, List, LeftPortion, RightPortion),
-		merge_sort(LeftPortion, NewLength, LeftSorted),
-		merge_sort(RightPortion, (Length - NewLength), RightSorted),
-		list.merge(LeftSorted, RightSorted, Result))
-	else
-		(Result = List).
+    if (Length > 1) then
+        (NewLength = Length // 2,
+        list.det_split_list(NewLength, List, LeftPortion, RightPortion),
+        merge_sort(LeftPortion, NewLength, LeftSorted),
+        merge_sort(RightPortion, (Length - NewLength), RightSorted),
+        list.merge(LeftSorted, RightSorted, Result))
+    else
+        (Result = List).
 
 % QUICK SORT HINTS:
 % You do not need to be smart about choosing a pivot value; you can,
@@ -94,24 +94,24 @@ merge_sort(List, Length, Result) :-
 :- mode split(in, in, out, out) is det.
 
 quick_sort(List, Result) :-
-	if (List = [Pivot|Tail]) then
-		(split(Pivot, Tail, LeftPortion, RightPortion),
-		quick_sort(LeftPortion, LeftSorted),
-		quick_sort(RightPortion, RightSorted),
-		list.append(LeftSorted, [Pivot|RightSorted], Result))
-	else
-		(Result = []).
+    if (List = [Pivot|Tail]) then
+        (split(Pivot, Tail, LeftPortion, RightPortion),
+        quick_sort(LeftPortion, LeftSorted),
+        quick_sort(RightPortion, RightSorted),
+        list.append(LeftSorted, [Pivot|RightSorted], Result))
+    else
+        (Result = []).
 
 split(Pivot, List, LeftPortion, RightPortion) :-
-	if (List = [Element|Rest]) then
-		(if (Element =< Pivot) then
-			(LeftPortion = [Element|LeftSorted],
-			RightPortion = RightSorted,
-			split(Pivot, Rest, LeftSorted, RightSorted))
-		else
-			(LeftPortion = LeftSorted,
-			RightPortion = [Element|RightSorted],
-			split(Pivot, Rest, LeftSorted, RightSorted)))
-	else
-		(LeftPortion = [],
-		RightPortion = []).
+    if (List = [Element|Rest]) then
+        (if (Element =< Pivot) then
+            (LeftPortion = [Element|LeftSorted],
+            RightPortion = RightSorted,
+            split(Pivot, Rest, LeftSorted, RightSorted))
+        else
+            (LeftPortion = LeftSorted,
+            RightPortion = [Element|RightSorted],
+            split(Pivot, Rest, LeftSorted, RightSorted)))
+    else
+        (LeftPortion = [],
+        RightPortion = []).

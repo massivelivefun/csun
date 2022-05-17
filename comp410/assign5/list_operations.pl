@@ -32,7 +32,7 @@ myFirst([Head|_], Head).
 % myLast/2: List, Result
 myLast([Head], Head).
 myLast([_|Tail], Result) :-
-	myLast(Tail, Result).
+    myLast(Tail, Result).
 
 % 3. TODO: Write a procedure named myInit that takes:
 %    1.) A list
@@ -51,7 +51,7 @@ myLast([_|Tail], Result) :-
 % myInit/2: List, Result
 myInit([_|[]], []).
 myInit([Head|Tail], [Head|Result]) :-
-	myInit(Tail, Result).
+    myInit(Tail, Result).
 
 % 4. TODO: Write a procedure named myAppend that takes:
 %    1.) A list
@@ -107,12 +107,12 @@ myAppend([Head|Tail], List2, [Head|Result]) :-
 
 % myLength/2: List, Length
 myLength(List, Length) :-
-	myLength(List, 0, Length).
+    myLength(List, 0, Length).
 % myLength/3: List, Accumulator, Length
 myLength([], Accum, Accum).
 myLength([_|Tail], Accum, Result) :-
-	NewAccum is Accum + 1,
-	myLength(Tail, NewAccum, Result).
+    NewAccum is Accum + 1,
+    myLength(Tail, NewAccum, Result).
 
 % 6. TODO: Write a procedure named myFlatten that takes:
 %    1.) A possibly nested list
@@ -140,13 +140,13 @@ myLength([_|Tail], Accum, Result) :-
 
 myFlatten([], []) :- !.
 myFlatten(Element, [Element]) :-
-	Element \= [_|_],
-	Element \= [].
+    Element \= [_|_],
+    Element \= [].
 myFlatten([Head|Tail], List) :-
-	!,
-	myFlatten(Head, HeadFlattened),
-	myFlatten(Tail, TailFlattened),
-	myAppend(HeadFlattened, TailFlattened, List).
+    !,
+    myFlatten(Head, HeadFlattened),
+    myFlatten(Tail, TailFlattened),
+    myAppend(HeadFlattened, TailFlattened, List).
 
 % 7. TODO: Write a procedure named insertPosition that
 %    takes:
@@ -178,9 +178,9 @@ myFlatten([Head|Tail], List) :-
 % insertPosition/4: List, Element, Position, NewList
 insertPosition(List, Element, 0, [Element|List]).
 insertPosition([Head|Tail], Element, Position, [Head|Rest]) :-
-	Position > 0,
-	NewPosition is Position - 1,
-	insertPosition(Tail, Element, NewPosition, Rest).
+    Position > 0,
+    NewPosition is Position - 1,
+    insertPosition(Tail, Element, NewPosition, Rest).
 
 % 8. TODO: Write a procedure named insertSorted that takes:
 %    1.) A sorted list of integers
@@ -205,10 +205,10 @@ insertPosition([Head|Tail], Element, Position, [Head|Rest]) :-
 % insertSorted/3: List, Element, Result
 insertSorted([], Element, [Element]).
 insertSorted([Head|Tail], Element, [Element, Head|Tail]) :-
-	Head >= Element,
-	!.
+    Head >= Element,
+    !.
 insertSorted([Head|Tail], Element, [Head|Rest]) :-
-	insertSorted(Tail, Element, Rest).
+    insertSorted(Tail, Element, Rest).
 
 % 9. TODO: Write a procedure named insertionSort that
 %    takes:
@@ -235,9 +235,9 @@ insertSorted([Head|Tail], Element, [Head|Rest]) :-
 
 % insertionSort/2: List, Result
 insertionSort(List, Result) :-
-	insertionSort(List, [], Result).
+    insertionSort(List, [], Result).
 % insertionSort/3: List, TempList, ResultList
 insertionSort([], List, List).
 insertionSort([Head|Tail], TempList, ResultList) :-
-	insertSorted(TempList, Head, SortedList),
-	insertionSort(Tail, SortedList, ResultList).
+    insertSorted(TempList, Head, SortedList),
+    insertionSort(Tail, SortedList, ResultList).

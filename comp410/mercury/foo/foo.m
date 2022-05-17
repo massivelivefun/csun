@@ -17,8 +17,8 @@ foo(2).
 foo(3).
 
 main(!IO) :-
-	solutions(
-		(pred(X::out) is nondet :-
-			foo(X)),
-		AllSolutions),
-	io.write(AllSolutions, !IO).
+    solutions(
+        (pred(X::out) is nondet :-
+            foo(X)),
+        AllSolutions),
+    io.write(AllSolutions, !IO).

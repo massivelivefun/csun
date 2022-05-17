@@ -42,7 +42,7 @@ add2ToY(coordinate(X, Y), coordinate(X, NewY)) :-
 % -The new coordinate
 
 addX(coordinate(X, Y), Num, coordinate(NewX, Y)) :-
-		NewX is X + Num.
+                NewX is X + Num.
 
 % Your implementation of `addX` should allow the
 % following query to succeed:

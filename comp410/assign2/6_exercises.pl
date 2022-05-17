@@ -13,10 +13,10 @@
 % and Celsius, respectively
 
 f_to_c(F, C) :-
-	C is (F - 32) * (5 / 9).
+    C is (F - 32) * (5 / 9).
 
 freezing(C) :-
-	C =< 0.
+    C =< 0.
 
 % With your conversion routine in hand, the following queries should
 % all succeed:

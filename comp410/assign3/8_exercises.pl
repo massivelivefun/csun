@@ -12,17 +12,17 @@
 % then failure should occur.
 
 sumAll(Low, High, Result) :-
-	once(sumAllAccum(Low, High, 0, Result)).
+    once(sumAllAccum(Low, High, 0, Result)).
 
 sumAllAccum(Low, High, Accum, Result) :-
-	High = Low,
-	Result is Accum + Low.
+    High = Low,
+    Result is Accum + Low.
 
 sumAllAccum(Low, High, Accum, Result) :-
-	High > Low,
-	NewLow is Low + 1,
-	NewAccum is Accum + Low,
-	sumAllAccum(NewLow, High, NewAccum, Result).
+    High > Low,
+    NewLow is Low + 1,
+    NewAccum is Accum + Low,
+    sumAllAccum(NewLow, High, NewAccum, Result).
 
 % With your summation procedure in hand, the following queries
 % should all succeed (do NOT simply hardcode these values!):
@@ -63,7 +63,7 @@ directPrereq(comp256, phil230).
 %     to course B.  This serves as a recursive case.
 
 prereq(A, B) :-
-	directPrereq(B, A).
+    directPrereq(B, A).
 prereq(A, B) :-
-	directPrereq(B, X),
-	prereq(X, A).
+    directPrereq(B, X),
+    prereq(X, A).

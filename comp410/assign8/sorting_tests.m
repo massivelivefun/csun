@@ -15,8 +15,8 @@
 
 :- type bound == int.
 :- type failing_test ---> failing_test(list(int),  % input
-				       list(int),  % expected
-				       list(int)). % received
+                       list(int),  % expected
+                       list(int)). % received
 
 :- pred list_element(int).
 :- mode list_element(out) is multi.
@@ -41,11 +41,11 @@ make_list(Bound, [H|T]) :-
 :- mode failing_tests(in, in(pred(in, out) is det), out) is det.
 failing_tests(Bound, Sort, Failures) :-
     solutions((pred(failing_test(List, Expected, Received)::out) is nondet :-
-		   make_list(Bound, List),
-		   sort(List, Expected),
-		   call(Sort, List, Received),
-		   Expected \= Received),
-	      Failures).
+           make_list(Bound, List),
+           sort(List, Expected),
+           call(Sort, List, Received),
+           Expected \= Received),
+          Failures).
 
 :- pred write_failure(failing_test, io, io).
 :- mode write_failure(in, di, uo) is det.
@@ -80,11 +80,11 @@ run_suite(SuiteName, SortingRoutine, !IO) :-
 
 main(!IO) :-
     run_suite("Insertion Sort (insertion_sort)",
-	      insertion_sort,
-	      !IO),
+          insertion_sort,
+          !IO),
     run_suite("Merge Sort (merge_sort)",
-	      merge_sort,
-	      !IO),
+          merge_sort,
+          !IO),
     run_suite("Quicksort (quick_sort)",
-	      quick_sort,
-	      !IO).
+          quick_sort,
+          !IO).

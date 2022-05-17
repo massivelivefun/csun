@@ -5,4 +5,4 @@
 :- implementation.
 
 main(!IO) :-
-	io.write_string("Hello, world!\n", !IO).
+    io.write_string("Hello, world!\n", !IO).
