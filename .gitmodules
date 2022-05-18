@@ -4,9 +4,6 @@
 [submodule "comp587/linked_list"]
 	path = comp587/linked_list
 	url = https://github.com/massivelivefun/linked_list
-[submodule "comp587/rand_depth"]
-	path = comp587/rand_depth
-	url = https://github.com/massivelivefun/rand_depth
 [submodule "comp587/rand-depth"]
 	path = comp587/rand-depth
 	url = https://github.com/massivelivefun/rand-depth
