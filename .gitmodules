@@ -4,6 +4,9 @@
 [submodule "comp482/EggDrop"]
 	path = comp482/EggDrop
 	url = https://github.com/massivelivefun/EggDrop
+[submodule "comp482/Sorts"]
+	path = comp482/Sorts
+	url = https://github.com/massivelivefun/Sorts
 [submodule "comp587/arithmetic"]
 	path = comp587/arithmetic
 	url = https://github.com/massivelivefun/arithmetic
