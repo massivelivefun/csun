@@ -1,6 +1,9 @@
 [submodule "comp333/Concurrency"]
     path = comp333/Concurrency
     url = https://github.com/massivelivefun/Concurrency
+[submodule "comp482/EggDrop"]
+	path = comp482/EggDrop
+	url = https://github.com/massivelivefun/EggDrop
 [submodule "comp587/arithmetic"]
 	path = comp587/arithmetic
 	url = https://github.com/massivelivefun/arithmetic
