@@ -19,3 +19,6 @@
 [submodule "comp587/trees"]
 	path = comp587/trees
 	url = https://github.com/massivelivefun/trees
+[submodule "comp610/MedianOfInts"]
+	path = comp610/MedianOfInts
+	url = https://github.com/massivelivefun/MedianOfInts
